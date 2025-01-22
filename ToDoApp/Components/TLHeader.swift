@@ -29,10 +29,9 @@ struct TLHeader: View {
                 Text(subTitle)
                     .font(.title2)
             }
-            .padding(.top, 30)
             .foregroundStyle(.white)
         }
-        .offset(y: -100)
+        .offset(y: -150)
         
     }
 }

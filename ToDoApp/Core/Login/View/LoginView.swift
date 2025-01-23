@@ -17,7 +17,13 @@ struct LoginView: View {
             TLHeader(title: "To Do List", subTitle: "Get things done", color: .pink)
                 .padding(.top, 50)
             Form() {
-                TextField("Username", text: $viewModel.username)
+                
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundStyle(.pink)
+                }
+                
+                TextField("Email", text: $viewModel.email)
                     .textFieldStyle(.plain)
                     .autocorrectionDisabled()
                     .autocapitalization(.none)
@@ -26,7 +32,7 @@ struct LoginView: View {
                     .autocorrectionDisabled()
                     .autocapitalization(.none)
                 Button {
-                    
+                    viewModel.login()
                 } label: {
                     Text("Log in")
                         .frame(width: 330, height: 49)
@@ -41,10 +47,14 @@ struct LoginView: View {
             
             VStack {
                 Text("New around here?")
+                    .font(.footnote)
                 NavigationLink("Create an account", destination: RegisterView())
+                    .font(.footnote)
+                    .foregroundStyle(.blue).bold()
             }
             .padding(.bottom, 50)
         }
+        .accentColor(.white)
     }
 }
 

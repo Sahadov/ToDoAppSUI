@@ -12,7 +12,6 @@ struct RegisterView: View {
     
     var body: some View {
         TLHeader(title: "Register", subTitle: "Join up ", color: .orange)
-            .padding(.top, 30)
         Form() {
             TextField("Username", text: $viewModel.username)
                 .textFieldStyle(.plain)

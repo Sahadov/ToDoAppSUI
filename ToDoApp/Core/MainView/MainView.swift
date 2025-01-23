@@ -11,11 +11,18 @@ struct MainView: View {
     @StateObject var viewModel = MainViewModel()
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-            ToDoListView()
+            accountView
         } else {
             LoginView()
         }
-        
+    }
+    
+    @ViewBuilder
+    var accountView: some View {
+        TabView {
+            Tab("Home", systemImage: "house", content: { ToDoListView(userId: viewModel.currentUserId) })
+            Tab("Profile", systemImage: "person.circle", content: { ProfileView() })
+        }
     }
 }
 

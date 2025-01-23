@@ -33,7 +33,7 @@ class RegisterViewModel: ObservableObject {
         let db = Firestore.firestore()
         db.collection("users")
             .document(id)
-            .setData(<#T##documentData: [String : Any]##[String : Any]#>)
+            .setData(newUser.asDictionary())
     }
     
     // Validate the form

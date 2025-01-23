@@ -13,11 +13,17 @@ struct RegisterView: View {
     var body: some View {
         TLHeader(title: "Register", subTitle: "Join up ", color: .orange)
         Form() {
+            
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundStyle(.pink)
+            }
+            
             TextField("Username", text: $viewModel.username)
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled()
                 .autocapitalization(.none)
-            TextField("Email", text: $viewModel.username)
+            TextField("Email", text: $viewModel.email)
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled()
                 .autocapitalization(.none)
@@ -26,9 +32,9 @@ struct RegisterView: View {
                 .autocorrectionDisabled()
                 .autocapitalization(.none)
             Button {
-                
+                viewModel.signin()
             } label: {
-                Text("Log in")
+                Text("Sign in")
                     .frame(width: 330, height: 49)
                     .background(.blue)
                     .foregroundStyle(.white)

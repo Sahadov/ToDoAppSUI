@@ -16,7 +16,7 @@ struct ToDoItemView: View {
             VStack(alignment: .leading) {
                 Text(item.title)
                     .fontWeight(.semibold)
-                    .font(.title2)
+                    .font(.body)
                 Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
                     .font(.footnote)
                     .foregroundStyle(Color(.secondaryLabel))
